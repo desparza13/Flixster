@@ -24,6 +24,7 @@ import okhttp3.Headers;
 public class MainActivity extends AppCompatActivity {
     public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=81eb8940300d9520d9120bcc6656a867";
     public static final String TAG = "MainActivity";
+    public static final String YouTubeAPIKey = "AIzaSyCGDFfR2e0lQsvTlPGvQGQWkbMdKw_KF00";
     List<Movie> movies;
 
     @Override

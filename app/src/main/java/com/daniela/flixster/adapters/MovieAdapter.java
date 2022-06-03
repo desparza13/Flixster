@@ -1,6 +1,7 @@
 package com.daniela.flixster.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -15,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.daniela.flixster.DetailActivity;
 import com.daniela.flixster.R;
 import com.daniela.flixster.models.Movie;
 
+import org.parceler.Parcels;
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -57,7 +60,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movies.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        RelativeLayout movieContainer;
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
@@ -66,22 +70,45 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
-            ivPoster = itemView.findViewById(R.id.ivPoster);
-        }
+            ivPoster = itemView.findViewById(R.id.ivDetail);
+            itemView.setOnClickListener(this);
 
+        }
+        // when the user clicks on a row, show MovieDetailsActivity for the selected movie
+        @Override
+        public void onClick(View v) {
+            // gets item position
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the movie at the position, this won't work if the class is static
+                Movie movie = movies.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, DetailActivity.class);
+                // serialize the movie using parceler, use its short name as a key
+                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                // show the activity
+                context.startActivity(intent);
+            }
+        }
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
             //Landscape or portrait, and save the image accordingly
             String imageUrl;
+            int placeholder;
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 //backdrop image
                 imageUrl = movie.getBackdropPath();
+                placeholder = R.drawable.flicks_backdrop_placeholder;
             }
             else {
                 imageUrl = movie.getPosterPath();
+                //imageUrl="dfgh";
+
+                placeholder = R.drawable.flicks_movie_placeholder;
             }
-            Glide.with(context).load(imageUrl).placeholder(Drawable.createFromPath("https://courses.codepath.org/course_files/metau_android/assets/flicks_movie_placeholder.png")).into(ivPoster);
+            Glide.with(context).load(imageUrl).placeholder(placeholder).error(placeholder).into(ivPoster);
 
         }
     }

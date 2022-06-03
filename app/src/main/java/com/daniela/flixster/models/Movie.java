@@ -1,4 +1,5 @@
 package com.daniela.flixster.models;
+import org.parceler.Parcel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -6,13 +7,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Parcel
 public class Movie {
 
     String backdropPath;
     String posterPath;
     String title;
     String overview;
+    double rating;
+
+    //required for parceler
+    public Movie(){}
 
     //Create a movie out of a certain JSON object
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -20,6 +25,7 @@ public class Movie {
         posterPath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        rating = jsonObject.getDouble("vote_average");
     }
 
     //Grab and add movies from the JSON to an array of movies
@@ -45,5 +51,9 @@ public class Movie {
 
     public String getOverview() {
         return overview;
+    }
+
+    public double getRating() {
+        return rating;
     }
 }
