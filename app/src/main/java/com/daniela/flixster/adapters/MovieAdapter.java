@@ -1,6 +1,8 @@
 package com.daniela.flixster.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +72,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         public void bind(Movie movie) {
             tvTitle.setText(movie.getTitle());
             tvOverview.setText(movie.getOverview());
-            Glide.with(context).load(movie.getPosterPath()).into(ivPoster);
+            //Landscape or portrait, and save the image accordingly
+            String imageUrl;
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                //backdrop image
+                imageUrl = movie.getBackdropPath();
+            }
+            else {
+                imageUrl = movie.getPosterPath();
+            }
+            Glide.with(context).load(imageUrl).placeholder(Drawable.createFromPath("https://courses.codepath.org/course_files/metau_android/assets/flicks_movie_placeholder.png")).into(ivPoster);
 
         }
     }
