@@ -3,48 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movieContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/wallpaper"
+    android:backgroundTint="#BFFFFFFF"
+    android:backgroundTintMode="src_over"
+    >
 
-    <ImageView
-        android:id="@+id/ivDetail"
-        android:layout_width="120dp"
+    <LinearLayout
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvDetailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@+id/ivDetail"
-        android:textSize="24dp"
-        tools:text="Fantastic Beasts: The Secrets of Dumbledore" />
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/layout_bg"
+        android:orientation="vertical">
 
-    <RatingBar
-        android:id="@+id/rbRating"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="-287dp"
-        android:layout_marginTop="67dp"
-        android:layout_toEndOf="@+id/tvDetailTitle"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:stepSize="0.5"
-        android:rating="5" />
 
-    <TextView
-        android:id="@+id/tvOverview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rbRating"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="9dp"
-        android:layout_toEndOf="@+id/ivDetail"
-        tools:text="Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers." />
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/limelight"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            tools:text="Fantastic Beasts: The Secrets of Dumbledore" />
+
+        <ImageView
+            android:id="@+id/ivDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="155dp"
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <RatingBar
+            android:id="@+id/rbRating"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="5"
+            android:progressTint="#FFD700"
+            android:stepSize="0.5" />
+
+
+        <TextView
+            android:id="@+id/tvOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            tools:text="Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers." />
+
+
+    </LinearLayout>
+
 </RelativeLayout>
+
+
+
 
 

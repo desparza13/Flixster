@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movieContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_bg"
+    >
 
     <ImageView
         android:id="@+id/ivDetail"
@@ -20,7 +22,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/ivDetail"
-        android:textSize="24dp"
+        android:fontFamily="@font/limelight"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="Fantastic Beasts: The Secrets of Dumbledore" />
 
     <TextView

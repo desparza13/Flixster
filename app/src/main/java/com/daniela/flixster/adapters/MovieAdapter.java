@@ -105,8 +105,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             }
             else {
                 imageUrl = movie.getPosterPath();
-                imageUrl="dfgh";
-
                 placeholder = R.drawable.flicks_movie_placeholder;
             }
             int radius = 30; // corner radius, higher value = more rounded
