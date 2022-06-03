@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.daniela.flixster.DetailActivity;
 import com.daniela.flixster.R;
 import com.daniela.flixster.models.Movie;
@@ -104,11 +105,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             }
             else {
                 imageUrl = movie.getPosterPath();
-                //imageUrl="dfgh";
+                imageUrl="dfgh";
 
                 placeholder = R.drawable.flicks_movie_placeholder;
             }
-            Glide.with(context).load(imageUrl).placeholder(placeholder).error(placeholder).into(ivPoster);
+            int radius = 30; // corner radius, higher value = more rounded
+            Glide.with(context).load(imageUrl).placeholder(placeholder).error(placeholder).transform(new RoundedCorners(radius))
+                    .into(ivPoster);
 
         }
     }
